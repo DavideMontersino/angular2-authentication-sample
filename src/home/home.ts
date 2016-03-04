@@ -7,15 +7,16 @@ import { Router } from 'angular2/router';
 let styles = require('./home.css');
 let template = require('./home.html');
 
-
 @Component({
   selector: 'home'
 })
+
 @View({
   directives: [CORE_DIRECTIVES],
   template: template,
   styles: [styles]
 })
+
 export class Home {
   jwt: string;
   decodedJwt: string;
@@ -37,7 +38,7 @@ export class Home {
   }
 
   callSecuredApi() {
-    this._callApi('Secured', 'http://localhost:3001/api/protected/random-quote');
+    this._callApi('Secured', 'http://localhost:8080/api/adTest/');
   }
 
   _callApi(type, url) {
@@ -50,6 +51,7 @@ export class Home {
           error => this.response = error.text()
         );
     }
+
     if (type === 'Secured') {
       // For protected routes, use AuthHttp
       this.authHttp.get(url)
