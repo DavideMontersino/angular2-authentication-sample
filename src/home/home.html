@@ -5,11 +5,29 @@
     <pre *ngIf="jwt" class="jwt"><code>{{ jwt }}</code></pre>
     <pre *ngIf="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>-->
 
-    <table class="table table-striped">
-      <tr *ngFor='#request of response'>
-        <td><a [routerLink]="[ '/AdTest', { id: request.id} ]" title={{request.title}} >{{ request.title }}</a></td>
-      </tr>
-    </table>
+    <div class="add-test row">
+      <div class="col-sm-12">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="url-textBox">Url to test</label>
+            <input type="text" class="form-control" [(ngModel)]="url" placeholder="http://url to be tested" >
+          </div>
+          <button type="submit" class="btn btn-default" (click)="createTest()">Test url</button>
+        </form>
+      <div>
+    </div>
+
+
+    <div class="performed-tests row">
+      <div class="col-sm-12">
+        <table class="table table-striped">
+          <tr *ngFor='#request of response'>
+            <td></td>
+            <td><a [routerLink]="[ '/AdTest', { id: request.id} ]" title={{request.title}} >{{ request.title }}</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>
 
     <p><a class="btn btn-primary" role="button" (click)="logout()">Logout</a></p>
   </div>

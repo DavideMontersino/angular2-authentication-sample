@@ -1,8 +1,9 @@
 import { Component, View } from 'angular2/core';
-import { CORE_DIRECTIVES } from 'angular2/common';
+import { CORE_DIRECTIVES, FORM_DIRECTIVES } from 'angular2/common';
 import { Http, Headers } from 'angular2/http';
 import { AuthHttp } from 'angular2-jwt';
 import { Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+
 
 let styles = require('./home.css');
 let template = require('./home.html');
@@ -12,7 +13,7 @@ let template = require('./home.html');
 })
 
 @View({
-  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
+  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES, FORM_DIRECTIVES],
   template: template,
   styles: [styles]
 })
@@ -22,6 +23,7 @@ export class Home {
   decodedJwt: string;
   response: Array<any>;
   api: string;
+  url: string;
 
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
     this.jwt = localStorage.getItem('jwt');
@@ -34,6 +36,18 @@ export class Home {
     this.router.parent.navigateByUrl('/login');
   }
 
+  createTest() {
+    let url: string;
+    url = 'http://localhost:8080/api/adTest/' + encodeURIComponent(this.url);
+    this.authHttp.post(url, '')
+      .subscribe(
+        response => {
+            let r = response.json().response;
+            this.router.navigate(['AdTest', {id: r.id}]);
+        },
+        error => this.response = error.text()
+      );
+  }
   _callApi(type, url) {
     this.response = null;
     if (type === 'Anonymous') {
