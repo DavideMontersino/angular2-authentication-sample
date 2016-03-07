@@ -5,6 +5,7 @@ import {LoggedInRouterOutlet} from './LoggedInOutlet';
 import {Home} from '../home/home';
 import {Login} from '../login/login';
 import {Signup} from '../signup/signup';
+import {AdTest} from '../adTest/adTest';
 
 let template = require('./app.html');
 
@@ -18,6 +19,7 @@ let template = require('./app.html');
 @RouteConfig([
   { path: '/', redirectTo: ['/Home'] },
   { path: '/home', component: Home, as: 'Home' },
+  { path: '/adTest/:id', component: AdTest, as: 'AdTest'},
   { path: '/login', component: Login, as: 'Login' },
   { path: '/signup', component: Signup, as: 'Signup' }
 ])

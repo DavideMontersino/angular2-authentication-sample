@@ -20,25 +20,18 @@ let template = require('./home.html');
 export class Home {
   jwt: string;
   decodedJwt: string;
-  response: string;
+  response: Array<any>;
   api: string;
 
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
+    this._callApi('Secured', 'http://localhost:8080/api/adTest/');
   }
 
   logout() {
     localStorage.removeItem('jwt');
     this.router.parent.navigateByUrl('/login');
-  }
-
-  callAnonymousApi() {
-    this._callApi('Anonymous', 'http://localhost:3001/api/random-quote');
-  }
-
-  callSecuredApi() {
-    this._callApi('Secured', 'http://localhost:8080/api/adTest/');
   }
 
   _callApi(type, url) {
@@ -47,7 +40,10 @@ export class Home {
       // For non-protected routes, just use Http
       this.http.get(url)
         .subscribe(
-          response => this.response = response.text(),
+          response => {
+              console.log(response.json());
+              this.response = response.json();
+          },
           error => this.response = error.text()
         );
     }
@@ -56,7 +52,11 @@ export class Home {
       // For protected routes, use AuthHttp
       this.authHttp.get(url)
         .subscribe(
-          response => this.response = response.text(),
+          response => {
+              let r = response.json().response;
+              console.log(r);
+              this.response = r;
+          },
           error => this.response = error.text()
         );
     }

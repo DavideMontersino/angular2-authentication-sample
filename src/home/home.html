@@ -1,14 +1,15 @@
 <div>
   <div class="home jumbotron centered">
-    <h1>Welcome to the angular2 authentication sample!</h1>
-    <h2 *ngIf="jwt">Your JWT is:</h2>
+    <h1>Ad inspector</h1>
+    <!--<h2 *ngIf="jwt">Your JWT is:</h2>
     <pre *ngIf="jwt" class="jwt"><code>{{ jwt }}</code></pre>
-    <pre *ngIf="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>
-    <p>Click any of the buttons to call an API and get a response</p>
-    <p><a class="btn btn-primary btn-lg" role="button" (click)="callAnonymousApi()">Call Anonymous API</a></p>
-    <p><a class="btn btn-primary btn-lg" role="button" (click)="callSecuredApi()">Call Secure API</a></p>
-    <p><a class="btn btn-primary btn-lg" role="button" (click)="logout()">Logout</a></p>
-    <h2 *ngIf="response">The response of calling the <span class="red">{{api}}</span> API is:</h2>
-    <h3 *ngIf="response">{{response}}</h3>
+    <pre *ngIf="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>-->
+
+    <ul *ngFor='#request of response'>
+      <!-- TODO use a link parameter array: https://angular.io/docs/ts/latest/guide/router.html#!#link-parameters-array -->
+      <li><a href="http://localhost:3000/adTest/{{request.id}}" title={{request.title}} >{{ request.title }}</a></li>
+    </ul>
+
+    <p><a class="btn btn-primary" role="button" (click)="logout()">Logout</a></p>
   </div>
 </div>

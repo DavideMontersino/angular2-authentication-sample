@@ -8,6 +8,7 @@
     "sourceMap": true
   },
   "files": [
+    "./src/adTest/adTest.ts",
     "./src/app/app.ts",
     "./src/app/LoggedInOutlet.ts",
     "./src/common/headers.ts",
