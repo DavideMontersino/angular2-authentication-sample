@@ -1,13 +1,15 @@
 <div>
-  <div class="home jumbotron centered">
+  <div class="home centered">
     <h1>Ad inspector</h1>
     <!--<h2 *ngIf="jwt">Your JWT is:</h2>
     <pre *ngIf="jwt" class="jwt"><code>{{ jwt }}</code></pre>
     <pre *ngIf="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>-->
 
-    <ul *ngFor='#request of response'>
-      <li><a [routerLink]="[ '/AdTest', { id: request.id} ]" title={{request.title}} >{{ request.title }}</a></li>
-    </ul>
+    <table class="table table-striped">
+      <tr *ngFor='#request of response'>
+        <td><a [routerLink]="[ '/AdTest', { id: request.id} ]" title={{request.title}} >{{ request.title }}</a></td>
+      </tr>
+    </table>
 
     <p><a class="btn btn-primary" role="button" (click)="logout()">Logout</a></p>
   </div>
