@@ -1,5 +1,5 @@
 <h1>Test results</h1>
-<a class="btn btn-success" href="/home">Home</a>
+<a class="btn btn-success" [routerLink]="[ '/Home' ]">Home </a>
 <p> showing test results for: <code *ngIf="har && har.log && har.log.pages"> <a href="{{har.log.pages[0].id}}">{{har.log.pages[0].id}}</a> </code></p>
 
 <div *ngIf="results">
