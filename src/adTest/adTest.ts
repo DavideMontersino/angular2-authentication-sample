@@ -2,7 +2,7 @@ import { Component, View, OnInit } from 'angular2/core';
 import { CORE_DIRECTIVES } from 'angular2/common';
 import { Http, Headers } from 'angular2/http';
 import { AuthHttp } from 'angular2-jwt';
-import { Router, RouteParams } from 'angular2/router';
+import { Router, RouteParams, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
 let styles = require('./adTest.css');
 let template = require('./adTest.html');
@@ -12,7 +12,7 @@ let template = require('./adTest.html');
 })
 
 @View({
-  directives: [CORE_DIRECTIVES],
+  directives: [CORE_DIRECTIVES, ROUTER_DIRECTIVES],
   template: template,
   styles: [styles]
 })
