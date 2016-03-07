@@ -25,7 +25,7 @@ export class Signup {
     this.http.post('http://localhost:3001/users', body, { headers: contentHeaders })
       .subscribe(
         response => {
-          localStorage.setItem('jwt', response.json().id_token);
+          localStorage.setItem('jwt', response.json().idToken);
           this.router.parent.navigateByUrl('/home');
         },
         error => {

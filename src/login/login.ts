@@ -27,7 +27,7 @@ export class Login {
     this.http.post('http://localhost:8080/login', body, { headers: contentHeaders })
       .subscribe(
         response => {
-          localStorage.setItem('jwt', response.json().id_token);
+          localStorage.setItem('jwt', response.json().idToken);
           this.router.parent.navigateByUrl('/home');
         },
         error => {
