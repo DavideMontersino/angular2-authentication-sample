@@ -33,6 +33,9 @@ Thumbs.db
 node_modules
 bower_components
 
+# Typings files #
+typings/
+
 # Dist       #
 dist
 public/__build__/**
