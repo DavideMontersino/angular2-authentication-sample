@@ -49,6 +49,19 @@ export class Home {
       );
   }
 
+  deleteTest(test) {
+    console.log(test);
+    let url = 'http://localhost:8080/api/adTest/' + test.id;
+    this.authHttp.delete(url)
+      .subscribe(
+        response => {
+            let r = response.json().response;
+            this.loadUserTests();
+        },
+        error => this.response = error.text()
+      );
+  }
+
   loadUserTests() {
     this.response = null;
 

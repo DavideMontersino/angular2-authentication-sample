@@ -19,10 +19,15 @@
 
 
     <div class="performed-tests row">
+      <h3>Performed tests</h3>
       <div class="col-sm-12">
         <table class="table table-striped">
           <tr *ngFor='#request of response'>
-            <td></td>
+            <td>
+              <button class="btn btn-default btn-xs btn-danger" type="submit" (click)="deleteTest(request)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+              </button>
+            </td>
             <td><a [routerLink]="[ '/AdTest', { id: request.id} ]" title={{request.title}} >{{ request.title }}</a></td>
           </tr>
         </table>
