@@ -6,15 +6,15 @@
     <pre *ngIf="jwt" class="jwt"><code>{{ decodedJwt | json }}</code></pre>-->
 
     <div class="add-test row">
-      <div class="col-sm-12">
+      <div class="col-sm-12 well">
         <form class="form-inline">
           <div class="form-group">
-            <label for="url-textBox">Url to test</label>
+            <label for="url-textBox">Start new test</label>
             <input type="text" class="form-control" [(ngModel)]="url" placeholder="http://url to be tested" >
           </div>
-          <button type="submit" class="btn btn-default" (click)="createTest()">Test url</button>
+          <button type="submit" class="btn btn-success" (click)="createTest()">Go <span class="glyphicon glyphicon-plus"></span></button>
         </form>
-      <div>
+      </div>
     </div>
 
 
