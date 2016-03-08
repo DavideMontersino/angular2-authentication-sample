@@ -4,7 +4,6 @@ import { Http, Headers } from 'angular2/http';
 import { AuthHttp } from 'angular2-jwt';
 import { Router, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
 
-
 let styles = require('./home.css');
 let template = require('./home.html');
 
