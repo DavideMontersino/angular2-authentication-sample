@@ -28,7 +28,7 @@ export class Home {
   constructor(public router: Router, public http: Http, public authHttp: AuthHttp) {
     this.jwt = localStorage.getItem('jwt');
     this.decodedJwt = this.jwt && window.jwt_decode(this.jwt);
-    this._callApi('Secured', 'http://localhost:8080/api/adTest/');
+    this.loadUserTests();
   }
 
   logout() {
@@ -48,31 +48,18 @@ export class Home {
         error => this.response = error.text()
       );
   }
-  _callApi(type, url) {
-    this.response = null;
-    if (type === 'Anonymous') {
-      // For non-protected routes, just use Http
-      this.http.get(url)
-        .subscribe(
-          response => {
-              console.log(response.json());
-              this.response = response.json();
-          },
-          error => this.response = error.text()
-        );
-    }
 
-    if (type === 'Secured') {
-      // For protected routes, use AuthHttp
-      this.authHttp.get(url)
-        .subscribe(
-          response => {
-              let r = response.json().response;
-              console.log(r);
-              this.response = r;
-          },
-          error => this.response = error.text()
-        );
-    }
+  loadUserTests() {
+    this.response = null;
+
+    this.authHttp.get('http://localhost:8080/api/adTest/')
+      .subscribe(
+        response => {
+            let r = response.json().response;
+            console.log(r);
+            this.response = r;
+        },
+        error => this.response = error.text()
+      );
   }
 }
